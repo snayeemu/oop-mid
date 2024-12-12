@@ -8,18 +8,20 @@ class Book:
     def borrow_book(self):
         if self.__availability == True:
             self.__availability = False
+            print(f"Book '{self.__title}' borrowed successfully.")
         else:
             print("Already borrowed")
     
     def return_book(self):
         if self.__availability == False:
             self.__availability = True
+            print(f"Book '{self.__title}' returned successfully.")
         else:
             print("You haven't borrowed this book!!!")
 
 
     def view_book_info(self):
-        print(self.__book_id, self.__title, self.__author, self.__availability)
+        print(f"ID: {self.__book_id}, Title: {self.__title}, Author: {self.__author}, Avaibility: {'Available' if self.__availability else 'Not Availabe'}")
     
     @property
     def get_book_id(self):
@@ -42,15 +44,17 @@ miu.entry_book('My book', 'Nayeem', True)
 while True:
     choice = int(input("""
                        
+------Welcome to the Library------
+1. View All Books
+2. Borrow Book
+3. Return Book
+4. Exit
                        
-Press
-    1 to 'View All Books',
-    2 to 'Borrow Book',
-    3 to 'Return Book',
-    4 to 'Exit': """))
+Enter your choice: """))
 
     if(choice == 1):
         book_list = Library().book_list
+        print("\n\nAll books:")
         for i in range(len(book_list)):
             book_list[i].view_book_info()
     elif(choice == 2):
